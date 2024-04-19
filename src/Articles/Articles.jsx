@@ -67,7 +67,7 @@ function Articles() {
                 />
                 <Box display='flex' justifyContent='space-between' alignItems='center' mt={2}>
                     <Typography variant='h6' component='h2'>
-                        Showing {paginatedArticles.length} articles
+                        Showing {paginatedArticles.length} articles per page
                     </Typography>
                     <Pagination count={Math.ceil(filteredArticles.length / articlesPerPage)} page={page} onChange={(event, value) => setPage(value)} />
                 </Box>

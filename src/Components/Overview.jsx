@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import CoinTable from './CoinTable';
 import CoinCards from './CoinCards';
+import Articles from '../Articles/Articles';
 
 
 function Overview() {
@@ -12,10 +13,9 @@ function Overview() {
                 <Col>
                     <CoinCards />
                 </Col>
-                <Col>
-                </Col>
             </Row>
             <CoinTable />
+
         </Container>
     )
 }
