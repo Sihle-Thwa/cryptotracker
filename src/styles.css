@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --bgcolour: #FFFFFF;
+    --fgcolour: #E5E5E5;
+    --primary-colour: #FCA311;
+    --secondary-colour: #14213D;
+    --textColor: #000000;
+}
+
+.Dashboard-Wrapper{
+    width: 100vw;
+    height: 90vh;
+    background-color: var(--bgcolour);
+    border-radius: 16px;
+    box-shadow: 0 44px 30px rgb(0, 0, 0, 0.1);
+    backdrop-filter: blur(0.3px);
+    border: 1px solid rgb(255, 255, 255, 0.1);
+    align-items: center;
+    justify-content: center;
+}
+
+.DashboardHeader {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-style: var(--textColor);
+}
+
+.Dashboard-Content h2 {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+}
+
+.Dashboard-Content{
+    box-shadow: 0 44px 30px var(--fgcolour);
+    backdrop-filter: blur(0.3px);
+    padding: 15px;
+    border-radius: 16px;
+    background-color: var(--fgcolour);
+
+}
+
+.coin-card {
+    width: min-content;
+    height: 120px;
+    background-color: var(--bgcolour);
+    border: 1px solid var(--fgcolour);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
+    margin-right: 16px;
+    margin-bottom: 16px;
+    float: left;
+}
+
+.coin-card img {
+    width: 30%;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.coin-card h2 {
+    margin-top: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.coin-card p{
+    justify-items: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.MuiTableCell-root {
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    padding: 16px;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .MuiTableHead-root {
+    background-color: #f2f2f2;
+    font-size: large;
+  }
+  
+  .MuiTableRow-root:hover {
+    background-color: #f5f5f5;
+  }
+
+  .Info-Container{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+  }
+
+.Info-row {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    margin-bottom: 5px;
+}
+.Info-label{
+    width: auto;
+    font-weight: bold;
+    white-space: nowrap;
+    padding-right: 10px;
+}
+
+.Info-value {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
