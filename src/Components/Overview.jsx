@@ -15,7 +15,7 @@ function Overview() {
                 </Col>
             </Row>
             <CoinTable />
-
+            <Articles />
         </Container>
     )
 }

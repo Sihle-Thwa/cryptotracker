@@ -9,7 +9,7 @@
 
 .Dashboard-Wrapper{
     width: 100vw;
-    height: 90vh;
+    height:fit-content;
     background-color: var(--bgcolour);
     border-radius: 16px;
     box-shadow: 0 44px 30px rgb(0, 0, 0, 0.1);
@@ -17,6 +17,7 @@
     border: 1px solid rgb(255, 255, 255, 0.1);
     align-items: center;
     justify-content: center;
+    padding-bottom: 20px;
 }
 
 .DashboardHeader {
