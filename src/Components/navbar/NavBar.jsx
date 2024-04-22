@@ -17,7 +17,7 @@ function NavBar() {
         <nav className='navbar'>
             <div className='nav-container'>
                 <NavLink exact to='/' className='nav-logo'>
-                    <span>CryptoTracker</span>
+                    <span>CT</span>
                 </NavLink>
 
                 <ul className={expand ? 'nav-menu active' : 'nav-menu'}>

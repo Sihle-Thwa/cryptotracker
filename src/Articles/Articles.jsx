@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Articles.css';
 import { fetchBitcoinNews } from '../Backend/articlesApi';
-import { Avatar, Box, Button, Container, List, Pagination, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, Container, List, Pagination, PaginationItem, TextField, Typography } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 function NewsCard({ article }) {
@@ -13,7 +13,11 @@ function NewsCard({ article }) {
                     {article.author}
                 </Typography>
                 <Typography variant='body2' color='textSecondary' ml='auto'>
-                    {new Date(article.published_at).toLocaleDateString()}
+                    {new Intl.DateTimeFormat('en-GB', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    }).format(new Date(Date.parse(article.publishedAt)))}
                 </Typography>
             </Box>
             <Box mt={1}>
@@ -69,7 +73,13 @@ function Articles() {
                     <Typography variant='h6' component='h2'>
                         Showing {paginatedArticles.length} articles per page
                     </Typography>
-                    <Pagination count={Math.ceil(filteredArticles.length / articlesPerPage)} page={page} onChange={(event, value) => setPage(value)} />
+                    <Pagination count={Math.ceil(filteredArticles.length / articlesPerPage)} page={page} onChange={(event, value) => setPage(value)}>
+                        {Array.from({ length: Math.ceil(filteredArticles.length / articlesPerPage) }, (_, index) => (
+                            <PaginationItem key={index} page={index} onClick={() => setPage(index)}>
+                                {index + 1}
+                            </PaginationItem>
+                        ))}
+                    </Pagination>
                 </Box>
                 <List>
                     {paginatedArticles.map((article) => (
@@ -80,4 +90,4 @@ function Articles() {
         </Container>
     )
 }
-export default Articles
+export default Articles;
