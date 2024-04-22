@@ -7,7 +7,5 @@
 }
 
 body{
-    background-color: var(--bgcolour);
-    padding: 5px;
- 
+    background-color: var(--bgcolour); 
 }

@@ -1,7 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
 
-const URL = "https://api.coingecko.com/api/v3"
 
 export const fetchAllCoins = async () => {
 
