@@ -8,4 +8,5 @@
 
 body{
     background-color: var(--bgcolour); 
+    margin: 1rem;
 }

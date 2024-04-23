@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './Components/navbar/NavBar.jsx';
-import Footer from './Components/Footer.jsx';
+import Footer from './Components/footer/Footer.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Articles from './Articles/Articles.jsx';
 import Overview from './Components/Overview.jsx';
