@@ -8,45 +8,23 @@
     --textColor: #000000;
 }
 
-.Dashboard-Wrapper{
-    margin-top: 3rem;
-    z-index: -1;
+.coin-wrapper{
+    margin-left: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     position: relative;
-    padding-top: 30px;
-    width: 100vw;
-    height:fit-content;
+    width: 100%;
+    height: fit-content;
     background-color: var(--bgcolour);
-    border-radius: 16px;
-    box-shadow: 0 44px 30px rgb(0, 0, 0, 0.1);
-    backdrop-filter: blur(0.3px);
-    border: 1px solid rgb(255, 255, 255, 0.1);
     align-items: center;
     justify-content: center;
-    padding-bottom: 20px;
-}
-
-.DashboardHeader {
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    font-style: var(--textColor);
-}
-
-.Dashboard-Content h2 {
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-}
-
-.Dashboard-Content{
-    box-shadow: 0 44px 30px var(--fgcolour);
-    backdrop-filter: blur(0.3px);
-    padding: 15px;
-    border-radius: 16px;
-    background-color: var(--fgcolour);
-
 }
 
 .coin-card {
-    width: min-content;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    width: auto;
     height: 120px;
     background-color: var(--bgcolour);
     border: 1px solid var(--fgcolour);
@@ -54,12 +32,12 @@
     padding: 16px;
     box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
     margin-right: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     float: left;
 }
 
 .coin-card img {
-    width: 30%;
+    width: 10%;
     border-radius: 4px;
     margin-bottom: 16px;
 }
@@ -67,12 +45,14 @@
 .coin-card h2 {
     margin-top: 0;
     font-family: 'Poppins', sans-serif;
+    font-size: medium;
 }
 
 .coin-card p{
     justify-items: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
+    font-style: italic;
 }
 
 .MuiTableCell-root {
@@ -85,6 +65,7 @@
   .MuiTableHead-root {
     background-color: #f2f2f2;
     font-size: large;
+    
   }
   
   .MuiTableRow-root:hover {

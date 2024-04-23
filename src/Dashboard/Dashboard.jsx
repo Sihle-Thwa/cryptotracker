@@ -1,23 +1,20 @@
-import React from 'react'
-import '../styles.css'
-import { Container } from '@mui/material'
-import Overview from '../Components/Overview'
+import React from 'react';
+import '../styles.css';
+import { Container } from '@mui/material';
+import Overview from '../Components/Overview.jsx';
+
 function Dashboard() {
+
     return (
         <Container className='Dashboard-Wrapper'>
-            <h1 className='DashboardHeader'>CryptoTracker</h1>
             <Container className='Dashboard-Content'>
                 <h2> Dashboard</h2>
                 <Container maxWidth="md" div>
-
                     <Overview />
-
                 </Container>
-
             </Container>
-
         </Container>
     )
 }
 
-export default Dashboard
+export default Dashboard;

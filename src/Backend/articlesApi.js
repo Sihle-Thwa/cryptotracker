@@ -6,7 +6,7 @@ export const fetchBitcoinNews = async () => {
     try {
         const response = await axios.get(`${URL}/everything`, {
             params: {
-                q: "bitcoin",
+                q: "crypto",
                 apiKey: "22d76ecaf13a472aa64b6a5fc344f398",
             },
             headers: {

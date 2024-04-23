@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAllCoins } from '../Backend/api';
 
+
 function CoinCards() {
     const [coins, setCoins] = useState([]);
 
@@ -12,8 +13,8 @@ function CoinCards() {
         fetchData();
     }, []);
     return (
-        <div>
-            {coins.slice(0, 6).map((coin) => (
+        <div className='coin-wrapper'>
+            {coins.slice(0, 12).map((coin) => (
                 <div key={coin.id} className='coin-card'>
                     <img src={coin.image} alt={coin.name} />
                     <h2>{coin.name}</h2>
@@ -21,7 +22,6 @@ function CoinCards() {
 
                 </div>
             ))}
-
         </div>
     )
 }

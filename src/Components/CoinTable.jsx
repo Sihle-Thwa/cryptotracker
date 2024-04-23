@@ -15,10 +15,11 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import { fetchAllCoins } from '../Backend/api';
 import { Box, Button, Card, IconButton, Popover, TableFooter, Typography, useTheme, } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import MoreIcon from '@mui/icons-material/More';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import '../styles.css'
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -83,8 +84,8 @@ TablePaginationActions.propTypes = {
 
 function CoinTable() {
     const [coins, setCoins] = useState([]);
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
     const [selectedCoin, setSelectedCoin] = useState([]);
     const [popoverOpen, setPopoverOpen] = useState(false);
     const [popoverAnchorEl, setPopoverAnchorEl] = useState(null);
@@ -156,7 +157,7 @@ function CoinTable() {
                                     <TableCell>{coin.price_change_percentage_24h}</TableCell>
                                     <TableCell>{coin.circulating_supply}</TableCell>
                                     <TableCell>
-                                        <Button onClick={() => handleCoinClick(coin)} ><MoreIcon /></Button>
+                                        <Button onClick={() => handleCoinClick(coin)} ><MoreHorizIcon /></Button>
                                     </TableCell>
                                 </TableRow>
                             ))
@@ -165,7 +166,7 @@ function CoinTable() {
                     <TableFooter>
                         <TableRow>
                             <TablePagination
-                                rowsPerPageOptions={[5]}
+                                rowsPerPageOptions={[6]}
                                 colSpan={3}
                                 count={coins.length}
                                 rowsPerPage={rowsPerPage}
@@ -246,4 +247,4 @@ function CoinTable() {
 
         </>);
 }
-export default CoinTable
+export default CoinTable;
