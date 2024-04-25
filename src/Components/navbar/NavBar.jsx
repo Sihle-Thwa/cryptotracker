@@ -28,7 +28,7 @@ function NavBar() {
                             activeClassName='active'
                             className='nav-links'
                             onClick={handleExpand}>
-                            <DashboardIcon /> Dashboard
+                            <DashboardIcon /> Overview
                         </NavLink>
                     </li>
                     <li className='nav-item'>
