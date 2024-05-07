@@ -45,7 +45,7 @@ Add a page to view graphs of selected cryptocurrencies using the Chart.js and Ap
 
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
-##Authors
+## Authors
 
 Siphesihle Mthethwa - Initial work - Siphesihle Mthethwa
 
