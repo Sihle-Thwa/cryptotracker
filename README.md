@@ -1,7 +1,9 @@
-##Crypto Tracker
+#Crypto Tracker
+
 A simple crypto tracker application that allows users to view the current price, price change percentage, and circulating supply of various cryptocurrencies.
 
-Features
+##Features
+
 Fetches data from the CoinGecko API using Axios
 Displays the current price, price change percentage, and circulating supply of various cryptocurrencies
 Allows users to filter cryptocurrencies by name or symbol
@@ -10,25 +12,21 @@ Displays a graph of the selected cryptocurrency's price history using the Chart.
 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Prerequisites
+##Prerequisites
+
 Node.js and npm installed
-Installing
-Clone the repository:
-Edit
-Full Screen
-Copy code
-git clone https://github.com/your-username/crypto-tracker.git
-Install the dependencies:
-Edit
-Full Screen
-Copy code
-npm install
-Start the application:
-Edit
-Full Screen
-Copy code
-npm start
-Built With
+
+###Installing
+
+1. Clone the repository:
+  ```bash
+  git clone https://github.com/your-username/crypto-tracker.git
+```
+
+##Install the dependencies:
+npm instal
+
+##Built With
 React.js - A JavaScript library for building user interfaces
 Axios - A promise-based HTTP client for the browser and Node.js
 CoinGecko API - A free API for retrieving cryptocurrency data
