@@ -1,8 +1,8 @@
-#Crypto Tracker
+# Crypto Tracker
 
 A simple crypto tracker application that allows users to view the current price, price change percentage, and circulating supply of various cryptocurrencies.
 
-##Features
+## Features
 
 Fetches data from the CoinGecko API using Axios
 Displays the current price, price change percentage, and circulating supply of various cryptocurrencies
@@ -12,21 +12,21 @@ Displays a graph of the selected cryptocurrency's price history using the Chart.
 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-##Prerequisites
+## Prerequisites
 
 Node.js and npm installed
 
-###Installing
+### Installing
 
 1. Clone the repository:
   ```bash
   git clone https://github.com/your-username/crypto-tracker.git
 ```
 
-##Install the dependencies:
+## Install the dependencies:
 npm instal
 
-##Built With
+## Built With
 React.js - A JavaScript library for building user interfaces
 Axios - A promise-based HTTP client for the browser and Node.js
 CoinGecko API - A free API for retrieving cryptocurrency data
@@ -35,21 +35,28 @@ ApexCharts - A modern and flexible JavaScript charting library
 API Usage
 The application fetches data from the CoinGecko API using Axios. The API is used to retrieve the current price, price change percentage, and circulating supply of various cryptocurrencies.
 
-Future Implementations
+## Future Implementations
+
 Implement filtering by name or symbol
 Implement comparison of two cryptocurrencies side-by-side
 Add a page to view graphs of selected cryptocurrencies using the Chart.js and ApexCharts libraries
-Contributing
+
+##Contributing
+
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
-Authors
-Your Name - Initial work - Your Name
+##Authors
+
+Siphesihle Mthethwa - Initial work - Your Name
+
 See also the list of contributors who participated in this project.
 
-License
+## License
+
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
-Acknowledgments
+## Acknowledgments
+
 CoinGecko API for providing free cryptocurrency data
 Axios for making HTTP requests easy
 Chart.js and ApexCharts for providing charting libraries
