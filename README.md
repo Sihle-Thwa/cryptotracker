@@ -1,4 +1,4 @@
-Crypto Tracker
+#Crypto Tracker
 A simple crypto tracker application that allows users to view the current price, price change percentage, and circulating supply of various cryptocurrencies.
 
 Features
