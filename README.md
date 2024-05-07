@@ -41,13 +41,13 @@ Implement filtering by name or symbol
 Implement comparison of two cryptocurrencies side-by-side
 Add a page to view graphs of selected cryptocurrencies using the Chart.js and ApexCharts libraries
 
-##Contributing
+## Contributing
 
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
 ##Authors
 
-Siphesihle Mthethwa - Initial work - Your Name
+Siphesihle Mthethwa - Initial work - Siphesihle Mthethwa
 
 See also the list of contributors who participated in this project.
 
@@ -58,7 +58,13 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ## Acknowledgments
 
 CoinGecko API for providing free cryptocurrency data
+
 Axios for making HTTP requests easy
+
 Chart.js and ApexCharts for providing charting libraries
+
 React.js for building user interfaces
+
+Material UI for interface library
+
 The React community for their support and resources.
