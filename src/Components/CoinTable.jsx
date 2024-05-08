@@ -14,6 +14,8 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { fetchAllCoins } from '../Backend/api';
 import { Box, Button, Card, IconButton, Popover, TableFooter, Typography, useTheme, } from '@mui/material';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import CloseIcon from '@mui/icons-material/Close';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Container from 'react-bootstrap/Container';
@@ -154,7 +156,19 @@ function CoinTable() {
                                     <TableCell>{coin.symbol}</TableCell>
                                     <TableCell>{coin.name}</TableCell>
                                     <TableCell>R{coin.current_price}</TableCell>
-                                    <TableCell>{coin.price_change_percentage_24h}</TableCell>
+                                    <TableCell className={`${coin.price_change_percentage_24h < 0 ? 'text-red-400' : 'text-green-400'}`}>
+                                        {coin.price_change_percentage_24h < 0 ?
+                                            <>
+                                                <TrendingDownIcon />
+                                                {coin.price_change_percentage_24h}
+                                            </>
+                                            :
+                                            <>
+                                                <TrendingUpIcon />
+                                                {coin.price_change_percentage_24h}
+                                            </>
+                                        }
+                                    </TableCell>
                                     <TableCell>{coin.circulating_supply}</TableCell>
                                     <TableCell>
                                         <Button onClick={() => handleCoinClick(coin)} ><MoreHorizIcon /></Button>

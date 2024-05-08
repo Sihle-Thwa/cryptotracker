@@ -7,7 +7,10 @@ export const fetchAllCoins = async () => {
             method: 'GET',
             url: 'https://api.coingecko.com/api/v3/coins/markets',
             params: { vs_currency: 'zar' },
-            headers: { accept: 'application/json', 'x-cg-demo-api-key': 'CG-dM17N6ui7skmJrhbqmjuQRMt' }
+            headers: {
+                accept: 'application/json',
+                'x-cg-demo-api-key': 'CG-dM17N6ui7skmJrhbqmjuQRMt'
+            }
         });
         return response.data;
     } catch (error) {

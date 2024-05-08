@@ -7,6 +7,6 @@
 }
 
 body{
-    background-color: var(--bgcolour); 
-    margin: 1rem;
+    background-color: var(--fgcolour); 
+    
 }

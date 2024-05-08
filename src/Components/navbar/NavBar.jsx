@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { BiMenu } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import './navbar.css';
+import SearchBar from '../searchBar/SearchBar';
+<script src='search.js'></script>
 
 function NavBar() {
     const [expand, setExpand] = useState(false);
@@ -19,6 +21,10 @@ function NavBar() {
                 <NavLink exact to='/' className='nav-logo'>
                     <span>CT</span>
                 </NavLink>
+                <div className='search-bar-container'>
+                    <SearchBar />
+                    <button id='search-button'>Search</button>
+                </div>
 
                 <ul className={expand ? 'nav-menu active' : 'nav-menu'}>
 
