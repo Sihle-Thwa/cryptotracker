@@ -2,50 +2,43 @@ import { useEffect, useState } from 'react'
 import { FaSearch } from 'react-icons/fa';
 import {
     Search
-
 } from '../../Backend/search';
 import { Link } from 'react-router-dom';
 import './searchbar.css'
-import _ from 'lodash';
 
 function SearchBar() {
     const [searchedItem, setSearchedItem] = useState('');
     const [cryptoData, setCryptoData] = useState(null);
     const [error, setError] = useState(null);
+    const [searchPressed, setSearchPressed] = useState(false);
 
     const handleSearch = (event) => {
         setSearchedItem(event.target.value);
     };
 
-    const debouncedFetchCryptoData = _.debounce((searchedItem) => {
-        if (searchedItem) {
+    const handleSearchPress = () => {
+        setSearchPressed(true);
+    };
+
+    useEffect(() => {
+        if (searchPressed && searchedItem) {
             Search.fetchCryptoData(searchedItem)
                 .then((data) => {
-                    if (data && data.length > 0) {
-                        setCryptoData(data[0]);
+                    if (data) {
+                        setCryptoData(data);
                         setError(null);
-                    }
-                    else {
+                    } else {
                         setCryptoData(null);
-                        setError(`No crypto data found for search term "${searchedItem}"`)
-
+                        setError(`No crypto data found for search term "${searchedItem}"`);
                     }
                 })
                 .catch((error) => {
                     setError(error.message);
                     setCryptoData(null);
                 });
-        } else {
-            setCryptoData(null);
-            setError(null);
+            setSearchPressed(false);
         }
-    }, 500
-    );
-
-
-    useEffect(() => {
-        debouncedFetchCryptoData(searchedItem);
-    }, [searchedItem]);
+    }, [searchPressed, searchedItem]);
 
     return (
         <div className='input-wrapper'>
@@ -54,12 +47,14 @@ function SearchBar() {
                 value={searchedItem}
                 onChange={handleSearch}
             />
+            <button onClick={handleSearchPress}>Search</button>
+
             {
                 cryptoData && (
-                    <Link to={`/crpto/${cryptoData.id}`}>
+                    <Link to={`/crypto/${cryptoData.id}`}>
                         <div className='search-result'>
                             <p> Name: {cryptoData.name}</p>
-                            <p>Price: {cryptoData.price}</p>
+                            <p>Price: {cryptoData.current_price}</p>
                         </div>
                     </Link>
                 )
@@ -67,6 +62,7 @@ function SearchBar() {
             {error && <p>Error: {error}</p>}
 
         </div>
+
     )
 }
 

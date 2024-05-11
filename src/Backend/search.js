@@ -1,11 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import debounce from 'lodash.debounce';
 
 export const Search = {
-    cryptoData: null,
-    error: null,
-
     async fetchCryptoData(searchTerm) {
         try {
             const response = await axios.get(
@@ -20,26 +16,37 @@ export const Search = {
 
             const data = response.data;
             if (data.length > 0) {
-                this.cryptoData = data[0];
-                this.error = null;
+                return data[0];
             } else {
-                this.cryptoData = null;
-                this.error = `No crypto data found for search term "${searchTerm}"`;
+                throw new Error(`No crypto data found for search term "${searchTerm}"`);
             }
         } catch (error) {
-            this.error = error.message;
-            this.cryptoData = null;
+            throw new Error(error.message);
         }
     },
 };
 
-const debounceFetchCryptoData = debounce(Search.fetchCryptoData, 500);
-
 export const useSearch = (searchedItem) => {
+    const [cryptoData, setCryptoData] = useState(null);
+    const [error, setError] = useState(null);
+
     useEffect(() => {
-        if (searchedItem) {
-            const searchTermID = searchedItem.toLowerCase().replace(' ', '-');
-            debounceFetchCryptoData(searchTermID);
-        }
+        const fetchData = async () => {
+            try {
+                const data = await Search.fetchCryptoData(searchedItem);
+                setCryptoData(data);
+                setError(null);
+            } catch (error) {
+                setError(error.message);
+                setCryptoData(null);
+            }
+        };
+        fetchData();
     }, [searchedItem]);
+
+    const filteredCoin = cryptoData ? cryptoData.filter((coin) =>
+        coin.name.toLowerCase().includes(searchedItem.toLowerCase())
+    ) : [];
+
+    return { cryptoData, error, filteredCoin };
 };

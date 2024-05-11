@@ -8,65 +8,45 @@
     --textColor: #000000;
 }
 .navbar {
-    width: 100%;
-    background-color: var(--bgcolour);
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    font-size: medium;
     font-family: 'Poppins', sans-serif;
-    z-index: 1;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    border-bottom: 1px solid var(--fgcolour);
+    background: var(--bgcolour);
 }
 
 .nav-container{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 80px;
     width: 100%;
-    height: 100px;
-    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-box-pack: justify;
+    -webkit-box-align: center;
+    
 }
 
 .nav-logo {
     color: var(--textColor);
     align-items: center;
-    margin-left: 20px;
+    min-width: 150px;
+    height: 100%;
     cursor: pointer;
     text-decoration: none;
-    font-size: x-large;
-    font-weight: 900;
-    flex-grow: 1;
+    font-size: xx-large;
+    font-weight: 700;
     display: flex;
     
-}
-.nav-search{
-    padding: 0.5rem 1rem;
-    display: flex;
-    align-items: center;
-    height: 100%;
 }
 
-.nav-search-input{
-    flex-grow: 1;
-    background-color: var(--fgcolour);
-    border-radius: 14px;
-    font-family: inherit;
-    font-size: inherit;
-    outline: none;
-    height: 28px;
-    transition: all 0.2s ease-out;
-    width: 100%;
-    margin: 0 auto;
-    
-    &:focus {
-    background-color: white;
-}
-}
 .nav-menu {
     display: flex;
+    gap: 40px;
+    align-items: center;
     list-style: none;
-    text-align: center;
-    margin-right: 2rem;
+    
 }
 
 .nav-links{
@@ -87,6 +67,7 @@
     display: block;
     height: 3px;
     width: 0;
+    transition: width 0.3s ease;
    
 }
 
@@ -112,20 +93,16 @@
         position: relative;
     }
     .nav-menu{
-        margin: 16px;
         display: flex;
         flex-direction: column;
         width: 100%;
-        position: absolute;
         top: 60px;
         opacity: 1;
         transition: all 0.5s ease;
-        background-color: var(--bgcolour);
         z-index: 1;
     }
     .nav-menu.active{
         width: 100%;
-        margin: 16px;
 
     }
 
@@ -152,15 +129,14 @@
     }
     .nav-menu.active {
         width: 100%;
-        position: absolute;
+        position: relative;
         transition: all 0.5s ease;
-        display: grid;
         opacity: 1;
       }
       
       .nav-menu:not(.active) {
         display: none;
-        opacity: 1;
+        opacity: 0;
       }
 
       

@@ -8,11 +8,17 @@
     --textColor: #000000;
 }
 
+.main {
+    display: block;
+    margin: 0;
+}
+
 .coin-wrapper{
-    margin-left: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    position: relative;
+    position: grid;
+    flex-direction: column;
+    padding-left: 0.5rem;   
     width: 100%;
     height: fit-content;
     background-color: var(--bgcolour);
