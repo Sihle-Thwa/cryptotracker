@@ -1,30 +1,45 @@
-const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import debounce from 'lodash.debounce';
 
-async function search() {
-    const id = searchInput.value;
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            'x-cg-demo-api-key': 'CG-dM17N6ui7skmJrhbqmjuQRMt',
-        },
-    };
+export const Search = {
+    cryptoData: null,
+    error: null,
 
-    try {
-        const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=zar&ids=${id}`, options);
-        const data = await response.json();
+    async fetchCryptoData(searchTerm) {
+        try {
+            const response = await axios.get(
+                `https://api.coingecko.com/api/v3/coins/markets?vs_currency=zar&ids=${searchTerm.toLowerCase().replace(' ', '-')}&per_page=1`,
+                {
+                    headers: {
+                        accept: 'application/json',
+                        'x-cg-demo-api-key': 'CG-dM17N6ui7skmJrhbqmjuQRMt',
+                    },
+                }
+            );
 
-        if (data.length > 0) {
-            // Redirect to the page for the specified ID
-            window.location.href = `/id/${id}`;
-        } else {
-            alert('No results found for the specified ID.');
+            const data = response.data;
+            if (data.length > 0) {
+                this.cryptoData = data[0];
+                this.error = null;
+            } else {
+                this.cryptoData = null;
+                this.error = `No crypto data found for search term "${searchTerm}"`;
+            }
+        } catch (error) {
+            this.error = error.message;
+            this.cryptoData = null;
         }
-    } catch (error) {
-        console.error(error);
-        alert('An error occurred while searching for the specified ID.');
-    }
-}
+    },
+};
 
-searchButton.addEventListener('click', search);
+const debounceFetchCryptoData = debounce(Search.fetchCryptoData, 500);
+
+export const useSearch = (searchedItem) => {
+    useEffect(() => {
+        if (searchedItem) {
+            const searchTermID = searchedItem.toLowerCase().replace(' ', '-');
+            debounceFetchCryptoData(searchTermID);
+        }
+    }, [searchedItem]);
+};

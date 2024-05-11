@@ -1,75 +1,73 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaSearch } from 'react-icons/fa';
+import {
+    Search
+
+} from '../../Backend/search';
+import { Link } from 'react-router-dom';
 import './searchbar.css'
+import _ from 'lodash';
 
 function SearchBar() {
-    const [input, setInput] = useState("");
+    const [searchedItem, setSearchedItem] = useState('');
     const [cryptoData, setCryptoData] = useState(null);
+    const [error, setError] = useState(null);
 
-    async function search() {
-
-        const id = input.toLowerCase().replace(' ', '-');
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                'x-cg-demo-api-key': 'CG-dM17N6ui7skmJrhbqmjuQRMt',
-
-            },
-        };
-
-        try {
-            const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=zar&ids=${id}`
-                , options);
-            const data = await response.json();
-            console.log(data)
-
-            if (data.length > 0) {
-                setCryptoData({
-                    name: data[0].name,
-                    price: data[0].current_price
-                });
-            } else {
-                setCryptoData(null);
-            }
-
-            //Load or add the pag that shows the information of the selected crypto using prop (ID)
-
-        } catch (error) {
-            console.log(error)
-            setCryptoData(null);
-
-        }
+    const handleSearch = (event) => {
+        setSearchedItem(event.target.value);
     };
 
-    const handleChange = (value) => {
-        setInput(value);
+    const debouncedFetchCryptoData = _.debounce((searchedItem) => {
+        if (searchedItem) {
+            Search.fetchCryptoData(searchedItem)
+                .then((data) => {
+                    if (data && data.length > 0) {
+                        setCryptoData(data[0]);
+                        setError(null);
+                    }
+                    else {
+                        setCryptoData(null);
+                        setError(`No crypto data found for search term "${searchedItem}"`)
 
-    }
+                    }
+                })
+                .catch((error) => {
+                    setError(error.message);
+                    setCryptoData(null);
+                });
+        } else {
+            setCryptoData(null);
+            setError(null);
+        }
+    }, 500
+    );
+
+
+    useEffect(() => {
+        debouncedFetchCryptoData(searchedItem);
+    }, [searchedItem]);
 
     return (
         <div className='input-wrapper'>
             <FaSearch id='search-icon' />
             <input placeholder='Search coin...'
-                value={input}
-                onChange={(e) => handleChange(e.target.value)}
-                onKeyUpCapture={(e) => {
-                    if (e.key === 'Enter') {
-                        search();
-                    }
-                }}
+                value={searchedItem}
+                onChange={handleSearch}
             />
             {
                 cryptoData && (
-                    <div className='search-result'>
-                        <p> Name: {cryptoData.name}</p>
-                        <p>Price: {cryptoData.price}</p>
-                    </div>
+                    <Link to={`/crpto/${cryptoData.id}`}>
+                        <div className='search-result'>
+                            <p> Name: {cryptoData.name}</p>
+                            <p>Price: {cryptoData.price}</p>
+                        </div>
+                    </Link>
                 )
             }
+            {error && <p>Error: {error}</p>}
 
         </div>
     )
 }
 
-export default SearchBar
+export default SearchBar;

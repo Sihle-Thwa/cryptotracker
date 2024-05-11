@@ -23,7 +23,6 @@ function NavBar() {
                 </NavLink>
                 <div className='search-bar-container'>
                     <SearchBar />
-                    <button id='search-button'>Search</button>
                 </div>
 
                 <ul className={expand ? 'nav-menu active' : 'nav-menu'}>
