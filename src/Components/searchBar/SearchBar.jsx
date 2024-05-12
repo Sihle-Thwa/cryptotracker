@@ -3,8 +3,10 @@ import { FaSearch } from 'react-icons/fa';
 import {
     Search
 } from '../../Backend/search';
-import { Link } from 'react-router-dom';
 import './searchbar.css'
+import { Box, Card, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 function SearchBar() {
     const [searchedItem, setSearchedItem] = useState('');
@@ -19,7 +21,10 @@ function SearchBar() {
     const handleSearchPress = () => {
         setSearchPressed(true);
     };
-
+    const handleClose = () => {
+        setCryptoData(null);
+        setError(null);
+    }
     useEffect(() => {
         if (searchPressed && searchedItem) {
             Search.fetchCryptoData(searchedItem)
@@ -42,24 +47,63 @@ function SearchBar() {
 
     return (
         <div className='input-wrapper'>
-            <FaSearch id='search-icon' />
+
             <input placeholder='Search coin...'
                 value={searchedItem}
                 onChange={handleSearch}
             />
-            <button onClick={handleSearchPress}>Search</button>
-
+            <button className='search-btn' onClick={handleSearchPress}><FaSearch id='search-icon' />
+            </button>
             {
                 cryptoData && (
-                    <Link to={`/crypto/${cryptoData.id}`}>
-                        <div className='search-result'>
-                            <p> Name: {cryptoData.name}</p>
-                            <p>Price: {cryptoData.current_price}</p>
-                        </div>
-                    </Link>
+
+                    <Card className='search-result'>
+                        <Box display='flex'
+                            alignItems='center'
+                            justifyContent={'flex-end'}
+                            mb={1}
+                            padding={1}
+                        >
+                            <IconButton onClick={handleClose}>
+                                <CloseIcon sx={{
+                                    cursor: 'pointer'
+                                }} />
+                            </IconButton>
+
+                        </Box>
+                        <Box display={'flex'}
+                            alignItems={'center'}
+                            justifyContent={'flex-start'}>
+                            <img src={cryptoData.image}
+                                alt={cryptoData.name}
+                                width={20}
+                                height={20}
+                            />
+
+                            <p>{cryptoData.name}</p>
+                            <p>R{cryptoData.current_price}</p>
+                        </Box>
+                    </Card>
+
                 )
             }
-            {error && <p>Error: {error}</p>}
+            {error &&
+                <Card className='search-result'>
+                    <Box display='flex'
+                        alignItems='center'
+                        justifyContent={'flex-end'}
+                        mb={1}
+                        padding={1}
+                    >
+                        <IconButton onClick={handleClose}>
+                            <CloseIcon sx={{
+                                cursor: 'pointer'
+                            }} />
+                        </IconButton>
+                    </Box>
+                    <p>{error}</p>
+                </Card>
+            }
 
         </div>
 
