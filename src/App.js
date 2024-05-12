@@ -4,19 +4,36 @@ import Footer from './Components/footer/Footer.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Articles from './Articles/Articles.jsx';
 import Overview from './Components/Overview.jsx';
-import '../src/styles.css'
 
 
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path='/' element={<Overview />} />
-        <Route path='/articles' element={<Articles />} />
-      </Routes>
-      <Footer />
+      <div className='grid'>
+
+        <nav>
+          <NavBar />
+        </nav>
+        <header>
+        </header>
+        <aside className='sidebar-left'>
+
+
+        </aside>
+        <main>
+          <Routes>
+            <Route path='/' element={<Overview />} />
+            <Route path='/articles' element={<Articles />} />
+          </Routes>
+        </main>
+        <aside className='sidebar-right'>
+        </aside>
+
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </BrowserRouter>
   );
 }

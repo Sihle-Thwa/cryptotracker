@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './coincard.css';
 import { fetchAllCoins } from '../Backend/api';
 
 

@@ -21,7 +21,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import '../styles.css'
+import './cointable.css'
 
 function TablePaginationActions(props) {
     const theme = useTheme();
