@@ -126,13 +126,16 @@ function CoinTable() {
         <>
             <TableContainer component={Paper} className='Table-Container'>
                 <Table sx={{
-                    minWidth: 500,
+                    minWidth: 350,
+                    maxWidth: 1000,
                     fontFamily: 'Poppins'
                 }}>
                     <TableHead className="Table-Header" sx={{
                         fontFamily: 'Poppins',
                         fontStyle: 'normal',
-                        fontSize: '900'
+                        fontSize: '900',
+                        fontWeight: 'bold',
+
 
                     }}>
                         <TableRow>

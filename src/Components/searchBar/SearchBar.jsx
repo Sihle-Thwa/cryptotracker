@@ -8,7 +8,20 @@ import { Box, Card, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 
-function SearchBar() {
+function SearchBar({ onCoinSelect }) {
+    const [query, setQuery] = useState('');
+    const [results, setResults] = useState([]);
+    const handleInputChange = (event) => {
+        setQuery(event.target.value);
+        // perform search with query
+    };
+
+    const handleResultClick = (coin) => {
+        onCoinSelect(coin);
+    };
+
+
+
     const [searchedItem, setSearchedItem] = useState('');
     const [cryptoData, setCryptoData] = useState(null);
     const [error, setError] = useState(null);
@@ -25,6 +38,7 @@ function SearchBar() {
         setCryptoData(null);
         setError(null);
     }
+
     useEffect(() => {
         if (searchPressed && searchedItem) {
             Search.fetchCryptoData(searchedItem)
@@ -73,7 +87,9 @@ function SearchBar() {
                         </Box>
                         <Box display={'flex'}
                             alignItems={'center'}
-                            justifyContent={'flex-start'}>
+                            justifyContent={'flex-start'}
+                            onClick={() => onCoinSelect(cryptoData)}>
+
                             <img src={cryptoData.image}
                                 alt={cryptoData.name}
                                 width={20}

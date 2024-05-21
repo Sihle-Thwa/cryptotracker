@@ -1,9 +1,10 @@
 .MuiTableCell-root {
     cursor: pointer;
     border-bottom: 1px solid #ccc;
-    padding: 16px;
     font-family: "Poppins", sans-serif;
+    width: 100%;
   }
+
   
   .MuiTableHead-root {
     background-color: #f2f2f2;

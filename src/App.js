@@ -4,10 +4,12 @@ import Footer from './Components/footer/Footer.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Articles from './Articles/Articles.jsx';
 import Overview from './Components/Overview.jsx';
+import CoinOverview from './Components/CoinOverview.jsx';
 
 
 
 function App() {
+
   return (
     <BrowserRouter>
       <div className='grid'>
@@ -23,8 +25,10 @@ function App() {
         </aside>
         <main>
           <Routes>
+
             <Route path='/' element={<Overview />} />
             <Route path='/articles' element={<Articles />} />
+            <Route path='/coinoverview' element={<CoinOverview />} />
           </Routes>
         </main>
         <aside className='sidebar-right'>

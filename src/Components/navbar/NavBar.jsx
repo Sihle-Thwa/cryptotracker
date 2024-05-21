@@ -6,10 +6,17 @@ import { BiMenu } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import './navbar.css';
 import SearchBar from '../searchBar/SearchBar';
+import CoinOverview from '../CoinOverview';
 <script src='search.js'></script>
 
 function NavBar() {
     const [expand, setExpand] = useState(false);
+    const [selectedCoin, setSelectedCoin] = useState(null);
+
+    const handleCoinSelect = (coin) => {
+        setSelectedCoin(coin)
+    }
+
 
     const handleExpand = () => {
         setExpand(!expand);
@@ -22,7 +29,11 @@ function NavBar() {
                     <span>CT</span>
                 </NavLink>
                 <div className='search-bar-container'>
-                    <SearchBar />
+                    <SearchBar onCoinSelect={selectedCoin}
+                    />
+                    {selectedCoin && <CoinOverview coin={selectedCoin} />}
+
+
                 </div>
 
                 <ul className={expand ? 'nav-menu active' : 'nav-menu'}>
