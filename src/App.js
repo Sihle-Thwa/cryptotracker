@@ -20,15 +20,13 @@ function App() {
         <header>
         </header>
         <aside className='sidebar-left'>
-
-
         </aside>
         <main>
           <Routes>
 
             <Route path='/' element={<Overview />} />
             <Route path='/articles' element={<Articles />} />
-            <Route path='/coinoverview' element={<CoinOverview />} />
+            <Route path='/coinoverview/:id' element={<CoinOverview />} />
           </Routes>
         </main>
         <aside className='sidebar-right'>
